@@ -1,111 +1,194 @@
-# Pakistan Petrol Price Analytics & Forecasting
+# 🇵🇰 Pakistan Petrol Price Analytics & Forecasting
 
 ## 📌 Project Overview
 
-This project analyzes and forecasts petrol price movements in Pakistan using historical petrol prices along with external economic factors such as **Brent crude oil prices** and the **USD/PKR exchange rate**.
+This project analyzes and forecasts **petrol price changes in Pakistan** using historical petrol prices and key external economic factors, particularly **Brent crude oil prices** and the **USD/PKR exchange rate**.
 
-The analysis explores relationships between these variables, examines lagged effects, develops predictive models, evaluates forecasting performance, and performs scenario analysis to understand potential changes in petrol prices.
+The project combines exploratory data analysis, correlation analysis, lag analysis, regression modeling, forecasting, model evaluation, and scenario analysis to understand the factors associated with changes in petrol prices.
+
+The goal is to demonstrate how Python and statistical modeling can be used to analyze real-world economic data and generate data-driven insights.
+
+---
 
 ## 🎯 Objectives
 
-* Analyze historical petrol price trends in Pakistan.
+* Analyze historical petrol price movements in Pakistan.
 * Examine the relationship between petrol prices and Brent crude oil prices.
-* Analyze the relationship between petrol prices and the USD/PKR exchange rate.
-* Investigate whether changes in external variables affect petrol prices with a time lag.
-* Build a model to predict petrol price changes.
-* Evaluate actual versus predicted results.
-* Perform scenario analysis under different economic conditions.
+* Investigate the relationship between petrol prices and the USD/PKR exchange rate.
+* Identify potential lagged effects of external economic variables.
+* Develop regression models to explain changes in petrol prices.
+* Build a forecasting model using lagged economic variables.
+* Compare actual and predicted petrol price changes and prices.
+* Perform scenario analysis to examine potential petrol price movements.
 
-## 🛠️ Technologies & Libraries
+---
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Statsmodels
-* yfinance
-* Requests
-* OpenPyXL
-* Jupyter Notebook
+## 🛠️ Tools & Technologies
+
+* **Python**
+* **Jupyter Notebook**
+* **Pandas** — Data manipulation and analysis
+* **NumPy** — Numerical computations
+* **Matplotlib** — Data visualization
+* **Seaborn** — Statistical visualization
+* **Statsmodels** — Statistical and regression modeling
+* **yfinance** — Financial market data
+* **Requests** — Data collection
+* **OpenPyXL** — Excel file handling
+
+---
 
 ## 📊 Analysis Performed
 
 ### 1. Exploratory Data Analysis
 
-The project begins by examining the dataset, including:
-
-* Dataset structure and dimensions
-* Variable information
-* Missing values
-* Descriptive statistics
-* Historical petrol price movements
-
-### 2. Correlation Analysis
-
-Correlation analysis was performed to investigate relationships between:
-
-* Petrol prices
-* Brent crude oil prices
-* USD/PKR exchange rate
-* Other relevant numerical variables
-
-A correlation heatmap was also created to visually summarize these relationships.
-
-### 3. Brent Crude Oil Analysis
-
-The project investigates the relationship between international crude oil prices and petrol prices in Pakistan.
+The project begins with an examination of the available data to understand its structure and characteristics.
 
 The analysis includes:
 
-* Petrol price vs. Brent crude oil
-* Correlation analysis
-* Lagged Brent crude oil relationships
+* Dataset dimensions and structure
+* Column inspection
+* Missing-value analysis
+* Descriptive statistics
+* Historical petrol price analysis
 
-### 4. USD/PKR Exchange Rate Analysis
+---
 
-The effect of exchange-rate movements on petrol prices was also examined through:
+### 2. Correlation Analysis
 
-* Petrol price vs. USD/PKR analysis
-* Correlation analysis
+Correlation analysis was performed to examine relationships between petrol prices and relevant economic variables.
+
+A correlation heatmap was created to visualize relationships among numerical variables and identify potentially important predictors.
+
+---
+
+### 3. Petrol Price vs. Brent Crude Oil
+
+Brent crude oil prices were analyzed as an important external factor affecting petrol prices.
+
+The analysis examines:
+
+* Relationship between petrol prices and Brent crude oil
+* Correlation between the variables
+* Lagged effects of Brent crude oil prices
+
+Both one-period and two-period lag relationships were investigated.
+
+---
+
+### 4. Petrol Price vs. USD/PKR
+
+The USD/PKR exchange rate was also examined because exchange-rate movements can affect the domestic cost of imported petroleum products.
+
+The project analyzes:
+
+* Petrol price vs. USD/PKR
+* Correlation between the variables
 * Lagged USD/PKR relationships
 
-### 5. Monthly Change Analysis
+---
 
-Monthly percentage changes were calculated to analyze how changes in petrol prices relate to changes in external economic variables.
+### 5. Lag Analysis
 
-The project includes:
+Lag analysis was conducted to determine whether changes in Brent crude oil prices and USD/PKR could be associated with petrol price changes in subsequent periods.
 
+The analysis includes:
+
+* Brent lag correlations
+* USD/PKR lag correlations
 * Monthly percentage-change correlations
 * Lagged monthly change correlations
-* Correlation visualizations
 
-### 6. Predictive Modeling
+This helps investigate whether external economic changes may influence petrol prices with a delay rather than immediately.
 
-A predictive model was developed to estimate petrol price changes using relevant explanatory variables.
+---
 
-Model performance was evaluated by comparing:
+## 📈 Predictive Modeling
 
-* Actual changes
-* Predicted changes
-* Actual prices
-* Predicted prices
+Ordinary Least Squares (**OLS**) regression was used to model changes in Pakistan petrol prices.
 
-### 7. Forecast Evaluation
+The forecasting model uses the following predictors:
 
-The model was evaluated over a test period to assess how closely the predictions followed the actual petrol price movements.
+* **Brent crude oil price — 1-period lag**
+* **Brent crude oil price — 2-period lag**
+* **USD/PKR exchange rate — 1-period lag**
 
-Visualizations compare actual and predicted values during the test period.
+The dependent variable is:
 
-### 8. Scenario Analysis
+* **Petrol price change**
 
-Scenario analysis was performed to examine how different assumptions about external economic variables could affect petrol prices.
+The model was trained using a separate training dataset and subsequently evaluated over a test period.
 
-This provides a practical way to understand potential petrol price movements under different market conditions.
+---
 
-## 📈 Key Visualizations
+## 📊 Model Performance
 
-The `outputs/` folder contains the major visualizations produced during the analysis:
+Several regression specifications were developed during the analysis.
+
+| Model                              |        R² | Adjusted R² |
+| ---------------------------------- | --------: | ----------: |
+| Initial Regression                 |     0.321 |       0.315 |
+| Improved Regression                |     0.352 |       0.344 |
+| **Forecast Model — Training Data** | **0.370** |   **0.360** |
+| Scenario Model                     |     0.352 |       0.343 |
+
+### Key Result
+
+The final forecasting model achieved an **R² of 0.370** and an **adjusted R² of 0.360** on the training data.
+
+This means the model explains approximately **37.0% of the variation in petrol price changes within the training sample**.
+
+The improved model also increased R² from **0.321 to 0.352** after incorporating an additional Brent crude oil lag, indicating improved explanatory power.
+
+> **Note:** R² represents explanatory power and should not be interpreted as model accuracy.
+
+---
+
+## 🔎 Key Regression Findings
+
+The forecasting model produced the following statistically significant relationships:
+
+* **Brent lag 1:** Positive and statistically significant
+* **Brent lag 2:** Positive and statistically significant
+* **USD/PKR lag 1:** Positive and statistically significant
+
+The forecast model produced a **Durbin-Watson statistic of 2.074**, indicating limited evidence of first-order autocorrelation in the training residuals.
+
+Overall, the regression results suggest that lagged movements in **Brent crude oil prices** and the **USD/PKR exchange rate** provide useful explanatory information for changes in Pakistan petrol prices.
+
+---
+
+## 🔮 Forecast Evaluation
+
+The forecasting stage compares model predictions with actual observations over the test period.
+
+The project includes visualizations showing:
+
+* Actual vs. predicted petrol price changes
+* Actual vs. predicted changes during the test period
+* Actual vs. predicted petrol prices during the test period
+
+These visualizations provide a visual assessment of how closely the model follows observed petrol price movements.
+
+---
+
+## 🧪 Scenario Analysis
+
+A scenario model was developed using the same key lagged predictors:
+
+* Brent lag 1
+* Brent lag 2
+* USD/PKR lag 1
+
+The scenario analysis can be used to explore how different assumptions about external economic conditions may affect predicted petrol price changes.
+
+This provides a practical application of the regression model beyond historical analysis.
+
+---
+
+## 📷 Key Visualizations
+
+The `outputs/` folder contains the major visualizations generated throughout the project:
 
 * Correlation heatmap
 * Petrol price vs. Brent crude oil
@@ -118,6 +201,8 @@ The `outputs/` folder contains the major visualizations produced during the anal
 * Forecast test-period results
 * Actual vs. predicted petrol prices
 * Scenario analysis
+
+---
 
 ## 📁 Project Structure
 
@@ -145,28 +230,52 @@ Pakistan-Petrol-Price-Analytics/
 └── requirements.txt
 ```
 
-## ▶️ How to Run
+---
 
-1. Clone or download this repository.
-2. Install the required Python libraries:
+## ▶️ How to Run the Project
+
+### 1. Clone the repository
+
+Clone or download this GitHub repository to your computer.
+
+### 2. Install the required libraries
+
+Open a terminal in the project directory and run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Open the notebook:
+### 3. Open the notebook
+
+Open:
 
 ```text
 notebooks/Pakistan_Petrol_Price_Analytics.ipynb
 ```
 
-4. Run the notebook cells sequentially to reproduce the analysis and visualizations.
+using Jupyter Notebook, JupyterLab, or another compatible environment.
 
-## 💡 Project Insights
+### 4. Run the analysis
 
-This project demonstrates how Python-based data analytics can be used to study the relationship between domestic petrol prices and important international and macroeconomic factors.
+Run the notebook cells sequentially to reproduce the data analysis, regression models, forecasts, and visualizations.
 
-The combination of correlation analysis, lag analysis, predictive modeling, forecast evaluation, and scenario analysis provides a broader understanding of petrol price dynamics in Pakistan.
+---
+
+## 💡 Key Takeaways
+
+This project demonstrates a complete data analytics workflow applied to a real-world economic problem.
+
+The analysis shows that:
+
+* Brent crude oil prices have a significant relationship with petrol price changes.
+* Lagged Brent crude oil variables provide additional explanatory information.
+* The USD/PKR exchange rate is also statistically significant in explaining petrol price changes.
+* Adding lagged variables improved the explanatory power of the regression model.
+* The final forecasting model achieved an **R² of 0.370** on the training data.
+* Scenario analysis can be used to examine potential petrol price movements under different economic conditions.
+
+---
 
 ## 👨‍💻 Author
 
@@ -176,4 +285,4 @@ Data Analytics | Python | SQL | Data Visualization
 
 ---
 
-⭐ If you find this project useful, feel free to explore the notebook and visualizations.
+⭐ **Explore the notebook and visualizations to see the complete analysis and forecasting workflow.**
