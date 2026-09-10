@@ -140,9 +140,9 @@ Pakistan-Petrol-Price-Analytics/
 │   ├── scenario_analysis.png
 │   └── usdpkr_lag_analysis.png
 │
-├── requirements.txt
+├── README.md
 │
-└── README.md
+└── requirements.txt
 ```
 
 ## ▶️ How to Run
